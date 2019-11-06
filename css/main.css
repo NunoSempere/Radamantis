@@ -1,0 +1,101 @@
+.button {
+    background: #f00;
+    position: absolute;
+    color: white;
+	font-size:25px;
+	padding:50px 50px;
+	text-decoration:none;
+    transition: all .5s;
+
+}
+
+.buttonTop {
+    top: -5%;
+    left: 51%;
+    border-radius: 0%;
+    transition: .5s;
+}
+
+
+.buttonSide {
+    border-radius: 0%;
+    transition: all .5s;
+
+}
+
+.diaryside{
+    top: 5%;
+    left: 0%;
+}
+
+.calibside {
+    top: 20%;
+    left: 0%;
+}
+
+.systemside {
+    top: 35%;
+    left: 0%;
+}
+
+.emotionalMaturityside {
+    top: 50%;
+    left: 0%;
+}
+
+.listOfProjectsside {
+    top: 65%;
+    left: 0%;
+}
+
+.ABTestingside {
+    top: 80%;
+    left: 0%;
+}
+
+p{
+    display: block;
+  	font-size:25px;
+    position: absolute;
+    left: 20%;
+    top: 10%;
+    bottom: 10%;
+    width: 70%
+
+}
+
+#motto {
+    display: block;
+  	font-size:100px;
+    position: absolute;
+    left: 30%;
+    top: 25%;
+}
+
+form {
+    display: none;
+  	font-size:25px;
+    position: absolute;
+    left: 60%;
+    top: 10%;
+    bottom: 10%;
+    width: 70%    
+}
+
+#mdEditorContainer.nonCentralMd{
+    
+    display: block;
+  	font-size:25px;
+    position: absolute;
+    left: 20%;
+    top: 10%;
+    bottom: 15%;
+    width: 35%
+    
+}
+
+#mdEditorContainer {
+    
+   transition: all .7s;
+
+}
