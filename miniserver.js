@@ -1,11 +1,6 @@
-const yourFilePath = "..."
 const {createServer} = require("http");
 const fs = require('fs');
 const qs = require('querystring');
-
-if(yourFilePath=="..."){
-    console.log("Please change your filepath!");
-}
 
 let server = createServer((request, response) => {
     
@@ -14,7 +9,7 @@ let server = createServer((request, response) => {
         requestUrlRead = "/"+buttonNames[i]+"Read"
         requestUrlWrite = "/"+buttonNames[i]+"Write"
         //console.log("RequestUrlWrite =", requestUrlWrite);
-        requestFile = yourFilePath+"textFiles"+buttonNames[i]+".txt"
+        requestFile = "./textFiles"+buttonNames[i]+".txt"
         //console.log(requestFile);
         if(request.url===requestUrlRead){
             //console.log("DiaryRead");
@@ -49,7 +44,7 @@ let server = createServer((request, response) => {
                 //console.log("post.fileName =\n", post.fileName);
                 //console.log("post.fileContents =\n", post.fileContents);
 
-                fs.writeFile(yourFilePath+"textFiles"+post.fileName, post.fileContents, (err)=>{ 
+                fs.writeFile("./textFiles"+post.fileName, post.fileContents, (err)=>{ 
                     if( err ) { 
                         throw err; 
                     }
