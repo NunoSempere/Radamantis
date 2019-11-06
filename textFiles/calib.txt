@@ -1,0 +1,15 @@
+ # Predictions & Calibration Seed
+ ## Recommended reading 
+ 
+ ### [*Superforecasting*](https://en.wikipedia.org/wiki/Superforecasting)
+ ### [Evidence on good forecasting practices from the Good Judgment Project](https://aiimpacts.org/evidence-on-good-forecasting-practices-from-the-good-judgment-project-an-accompanying-blog-post/)
+ 
+Hat-tip: You'll be able to find the book, and many others, at [Library Genesis](https://en.wikipedia.org/wiki/Library_Genesis)
+
+## Useful heuristics
+- I have found that I am too {overconfident, underconfident} when I say X%
+- Remember to take the outside view
+- ...
+
+## Your predictions
+

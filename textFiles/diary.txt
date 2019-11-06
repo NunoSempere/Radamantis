@@ -1,0 +1,21 @@
+# Diary. Seed
+## Look into [Gratitude Journaling!](https://en.wikipedia.org/wiki/Gratitude_journal)
+
+As far as I understand, it's one of the few psychology interventions that has some evidence behind it. The way I've used it is, you write 5 things you're grateful for every day.
+
+1. I'm grateful for 
+2. I'm grateful for
+3. I'm grateful for
+4. I'm grateful for
+
+## This is a day
+
+Today, I want to do
+- This
+- And that
+- And this other thing
+
+Today, I did
+- This
+- And that
+- But not that other thing.

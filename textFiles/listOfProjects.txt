@@ -1,0 +1,15 @@
+# List Of Projects. Seed
+
+## Index.
+- This is a project
+- This is another project
+- This is a third project
+
+## This is a project
+This are the details of the project
+
+## This is another project
+This are the details of the second project
+
+## This is a third project
+This are the details of the third project
