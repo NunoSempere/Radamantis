@@ -1,6 +1,11 @@
+const yourFilePath = "..."
 const {createServer} = require("http");
 const fs = require('fs');
 const qs = require('querystring');
+
+if(yourFilePath=="..."){
+    console.log("Please change your filepath!");
+}
 
 let server = createServer((request, response) => {
     
@@ -9,7 +14,7 @@ let server = createServer((request, response) => {
         requestUrlRead = "/"+buttonNames[i]+"Read"
         requestUrlWrite = "/"+buttonNames[i]+"Write"
         //console.log("RequestUrlWrite =", requestUrlWrite);
-        requestFile = "/home/nuno/Documents/WEBDEV/JavaScript/Radamantis/textFiles/"+buttonNames[i]+".txt"
+        requestFile = yourFilePath+buttonNames[i]+".txt"
         //console.log(requestFile);
         if(request.url===requestUrlRead){
             //console.log("DiaryRead");
@@ -44,7 +49,7 @@ let server = createServer((request, response) => {
                 //console.log("post.fileName =\n", post.fileName);
                 //console.log("post.fileContents =\n", post.fileContents);
 
-                fs.writeFile("/home/nuno/Documents/WEBDEV/JavaScript/Radamantis/textFiles/"+post.fileName, post.fileContents, (err)=>{ 
+                fs.writeFile(yourFilePath+post.fileName, post.fileContents, (err)=>{ 
                     if( err ) { 
                         throw err; 
                     }
