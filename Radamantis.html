@@ -1,0 +1,285 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+
+
+<script>
+function showMdEditor(text){
+    mdEditorContainer.style.display = "block";
+    simplemde.value(text);
+
+}
+function hideMdEditor(){
+    mdEditorContainer.style.display = "none";
+}
+
+function readFileAndDisplay(file){
+    //https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
+    // $.get(URL,callback);
+
+    $.get(
+        "http://localhost:8000/"+file+"Read", 
+        function(data, status){
+            showMdEditor(data);
+        }
+    );
+
+}
+
+function saveFile(fileStart, data){
+    $.post(
+        "http://localhost:8000/BDI"+fileStart+"Write", 
+        {
+            fileName: fileStart+".txt",
+            fileContents: data
+        },
+        function(data, status){
+            // do nothing
+        }
+    );
+}
+
+</script>
+
+</head>
+
+
+<body>
+
+<!--
+    # = https://en.wikipedia.org/wiki/Fragment_identifier
+-->
+<a href="#" id="diary" class="button buttonSide diaryside">Diary</a>
+<a href="#" id="calib" class="button buttonSide calibside">Calibration</a>
+<a href="#" id="system" class="button buttonSide systemside">The System that is me</a>
+<a href="#" id="emotionalMaturity" class="button buttonSide emotionalMaturityside">Emotional Maturity</a>
+<a href="#" id="listOfProjects" class="button buttonSide listOfProjectsside">List of Projects</a>
+<a href="#" id="ABTesting" class="button buttonSide ABTestingside">A/B Testing</a>
+
+<p class= "" id="mdEditorContainer">
+    <textarea id="mdEditor" hidden></textarea>
+</p>
+
+<p id="Motto">To grow stronger. <br>For the world to flourish. </p>
+
+<form id="BDI" action="localhost:8000" method="post">
+
+    </br>"1. Feeling sad or down in the dumps: "
+    <input type="number" id="Q1">
+
+    </br>"2. Feeling unhappy or blue: "
+    <input type="number" id="Q2">
+
+    </br>"3. Crying spells or tearfulness: "
+    <input type="number" id="Q3">
+
+    </br>"4. Feeling discouraged: "
+    <input type="number" id="Q4">
+
+    </br>"5. Feeling hopeless: "
+    <input type="number" id="Q5">
+
+    </br>"6. Low self esteem: "
+    <input type="number" id="Q6">
+
+    </br>"7. Feeling worthless or inadequate: "
+    <input type="number" id="Q7">
+
+    </br>"8. Guilt or shame: "
+    <input type="number" id="Q8">
+
+    </br>"9. Criticizing yourself or blaming yourself: "
+    <input type="number" id="Q9">
+
+    </br>"10. Difficulty making decisions: "
+    <input type="number" id="Q10">
+
+    </br>"11. Loss of interest in family, friends or colleagues: "
+    <input type="number" id="Q11">
+
+    </br>"12. Loneliness: "
+    <input type="number" id="Q12">
+
+    </br>"13. Spending less time with family or friends: "
+    <input type="number" id="Q13">
+
+    </br>"14. Loss of motivation: "
+    <input type="number" id="Q14">
+
+    </br>"15. Loss of interest in work or other activities: "
+    <input type="number" id="Q15">
+
+    </br>"16. Avoiding work or other activities: "
+    <input type="number" id="Q16">
+
+    </br>"17. Loss of pleasure or satisfaction in life: "
+    <input type="number" id="Q17">
+
+    </br>"18. Feeling tired: "
+    <input type="number" id="Q18">
+
+    </br>"19. Difficulty sleeping or sleeping too much: "
+    <input type="number" id="Q19">
+
+    </br>"20. Decreased or increased appetite: "
+    <input type="number" id="Q20">
+
+    </br>"21. Loss of interest in sex: "
+    <input type="number" id="Q21">
+
+    </br>"22. Worrying about your health: "
+    <input type="number" id="Q22">
+
+    </br>"23. Do you have any suicidal thoughts?: "
+    <input type="number" id="Q23">
+
+    </br>"24. Would you like to end your life?: "
+    <input type="number" id="Q24">
+
+    </br>"25. Do you have a plan for harming yourself?: "
+    <input type="number" id="Q25">
+
+    </br><input type="submit" value="Submit" >
+
+</form>
+
+</body>
+
+<script>
+
+// Temporarily hide the form:
+
+var BDIForm= document.getElementById("BDI");
+BDIForm.style.display = "none";
+    // We will also want to define the motto, to hide it when the form is present.
+    var Motto= document.getElementById("Motto");
+
+
+// This is a simple Markdown editor, taken from: https://github.com/sparksuite/simplemde-markdown-editor
+// https://simplemde.com
+
+var mdEditorContainer= document.getElementById("mdEditorContainer");
+var mdEditor= document.getElementById("mdEditor");
+mdEditor.setAttribute("hidden", false);
+var simplemde = new SimpleMDE({ 
+    element: $("mdEditor")[0],
+
+        autosave: {
+        enabled: true,
+        uniqueId: "MyUniqueID",
+        delay: 10000,
+    },
+    spellChecker: false
+    });
+mdEditorContainer.style.display = "none";
+
+
+
+// We name the different buttons
+var buttonNames = ["diary", "calib", "system", "emotionalMaturity", "listOfProjects", "ABTesting"];
+
+var buttons = Array(buttonNames.length);
+
+for (let i = 0; i < buttonNames.length; i++) {
+  buttons[i] = document.getElementById(buttonNames[i]);
+}
+
+// This controls the flow of the program. What happens when you click on different buttons?
+for (let i = 0; i < buttons.length; i++) {
+
+    // What happens when you click a button?
+    
+    buttons[i].addEventListener("click", function(event){
+        if(buttons[i].className=="button buttonTop"){
+            // ... when that button is a the top?
+            
+            // Quantified self is a little bit special. Note that we're adding this to every button.
+            if(buttonNames[i]=="ABTesting"){
+                mdEditorContainer.className = "";
+                Motto.style.display = "block";
+                BDI.style.display = "none";
+
+            }
+            
+            Motto.style.display = "block";
+
+            
+            // We hide the Markdown Editor
+            hideMdEditor();
+            
+            
+            // And change the DOM so that it's now at the side. CSS controls the transition.
+            saveFile(buttonNames[i],simplemde.value());
+            buttons[i].className="button buttonSide" + " " + buttonNames[i] + "side";
+
+
+
+        }else{
+            // ... when that button is to the side?
+
+            // Quantified self is a little bit special. Note that we're adding this to every button.
+            if(buttonNames[i]=="ABTesting"){
+                mdEditorContainer.className = "nonCentralMd";
+                Motto.style.display = "none";
+                BDI.style.display = "block";
+            }else{
+                BDI.style.display = "none";
+                mdEditorContainer.className = "";
+            }
+
+            
+            // If any other botton is at the top, we move it to the side
+            for(let j=0;j<buttons.length; j++){
+                if(j!=i){
+                    if(buttons[j].className == "button buttonTop"){
+                        // We save the content of its markdown editor into the corresponding file.
+                        // saveFile(buttons[j]);
+                        saveFile(buttonNames[j],simplemde.value());
+                    }
+                    buttons[j].className = 'button buttonSide' +" "+ buttonNames[j]+"side";
+                }
+            }
+            
+            // We move it to the top
+            buttons[i].className="button buttonTop";
+            
+            // this gets the contents of, say, diary.txt
+            readFileAndDisplay(buttonNames[i]);
+            
+            
+            //showMdEditor(EditorText[i]);
+        }
+
+    });
+}
+
+
+// This controls the BDI form for the quantified self
+    // https://api.jquery.com/submit/
+    // 
+    
+    $("#BDI").submit(
+    
+        function(event){
+            event.preventDefault();
+            
+            valueDBI = 0;
+            // +Date.now()
+            stringDBI = "\n\nBDI: " +$('#Q'+1).val();
+
+            for(let i=2; i<=25; i++){
+                stringDBI = stringDBI + "," + $('#Q'+i).val();
+                valueDBI += Number($('#Q'+i).val());
+            }
+            //alert((new Date()).toString());
+            simplemde.value(simplemde.value() + stringDBI + "\n#BDI: " + valueDBI +"\nDate: " +(new Date()).toString()+"\nHang in there buddy");
+            
+        }
+    
+    )
+
+
+</script>
