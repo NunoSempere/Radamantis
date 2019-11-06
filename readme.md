@@ -17,7 +17,7 @@ Download Radamantis.zip, and unzip it in a convenient directory. Open Radamantis
 
 Although it is written in JavaScript/HTML/CSS, Radamantis is not connected to the internet. Instead, it interacts with a node.js server which lives on the user's computer. 
 
-Node can be installed from [here](https://nodejs.org/en/download/), and the server can be run like:
+Node can be downloaded [here](https://nodejs.org/en/download/), and the server can be run like:
 
 ```
 your@Computer:yourFilePath$ node miniserver.js
