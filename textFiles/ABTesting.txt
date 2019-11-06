@@ -1,0 +1,8 @@
+# Quantified self. Seed
+> The quantified self refers both to the cultural phenomenon of self-tracking with technology and to a community of users and makers of self-tracking tools who share an interest in “self-knowledge through numbers.”
+> From: [Wikipedia](https://en.wikipedia.org/wiki/Coping)
+
+See also: [Gwern's experiments](https://www.gwern.net/tags/experiments)
+
+## Try filling in and submitting the checklist ->
+
