@@ -14,7 +14,7 @@ let server = createServer((request, response) => {
         requestUrlRead = "/"+buttonNames[i]+"Read"
         requestUrlWrite = "/"+buttonNames[i]+"Write"
         //console.log("RequestUrlWrite =", requestUrlWrite);
-        requestFile = yourFilePath+buttonNames[i]+".txt"
+        requestFile = yourFilePath+"textFiles"+buttonNames[i]+".txt"
         //console.log(requestFile);
         if(request.url===requestUrlRead){
             //console.log("DiaryRead");
@@ -49,7 +49,7 @@ let server = createServer((request, response) => {
                 //console.log("post.fileName =\n", post.fileName);
                 //console.log("post.fileContents =\n", post.fileContents);
 
-                fs.writeFile(yourFilePath+post.fileName, post.fileContents, (err)=>{ 
+                fs.writeFile(yourFilePath+"textFiles"+post.fileName, post.fileContents, (err)=>{ 
                     if( err ) { 
                         throw err; 
                     }
